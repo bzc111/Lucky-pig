@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 记住这里是配置文件 必须放在资源文件夹里边 不能放在普通文件夹 -->
+ <!-- namespace 名称空间 ,目前这里随便写-->
+<!--  <mapper namespace="zz"> -->
+<mapper namespace="mapper.EmployeeMapper">
+<!-- namespace 名称空间 指定接口的全类名 ，这时候下面的id唯一标识，就是mapper.java中的接口名-->
+<!-- id 唯一标识，可以理解成一个特定的指针，或者方法名，将来要用的 
+	 resultType 返回值类型 也就是将来需要的查询出来的对象
+	 #{id} 从传递过来的参数中取出id值
+-->
+<!-- 给字段对应不上的起一个别名，基础类中的属性放在前面中间一个空格 紧跟数据库中的对应的字段 -->
+<!-- <select  id ="selectEmp" resultType="Employee"> -->
+<!-- 此时不仅全局配置文件和映射文件联系到了一块 连标识和.java文件也联系到了一块 -->
+<select  id ="getEmpById" resultType="Employee">
+select id ,last_name lastName ,gender,email from tbl_employee where id = #{id}
+</select>
+</mapper>

@@ -1,0 +1,8 @@
+1.接口式编程
+原生：   Dao =====>DaoImpl
+mybatis Mapper ====>xxMapper.xml
+2.SqlSession代表和数据库的一次会话，用完必须关闭
+3.SqlSession 和 connection一样都不是线程安全的，每次使用都得去获取新的对象
+4.mapper接口没有实现类，但是mybatis会为这个接口生成一个代理对象
+将接口和xml文件进行绑定            
+Employee e = sqlsession.getMapper(employeeMapper.class);

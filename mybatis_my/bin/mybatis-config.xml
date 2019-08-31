@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 
+		<typeAlias type="com.briup.pojo.Student" alias="Student" />
+		<typeAlias type="com.briup.homework.Teacher" alias="Teacher" /> -->
+		
+		<!-- 给指定包下面所有的类设置别名，别名就是类名本身 -->
+		<package name="bean"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" /> 
+				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" /> 
+				<property name="username" value="briup" />
+				<property name="password" value="briup" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 将我们写好的sql映射文件（EmployeeMapper.xml）一定要注册到全局配置文件中（mybatis_config.xml） -->
+	<mappers>
+		<mapper resource="EmployeeMapper.xml"/>
+	</mappers>
+	
+</configuration>
