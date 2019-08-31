@@ -1,0 +1,2 @@
+1.注意修改db.properties中的数据库配置信息,保持和自己的一致
+2.建表语句在com.briup.sql包里面
