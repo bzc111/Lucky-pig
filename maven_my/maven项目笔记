@@ -1,0 +1,65 @@
+1.maven下载安装包是个绿色的安装包直接解压就行了 解压下来结构如下：
+ 1.1 bin：放一些可执行的二进制文件
+ 1.2 boot：里面放的是maven专用的类加载器一个.jar文件，这个就不是jdk的那套东西了，但是还得基于jdk原始的类加载器把她加载上
+ 1.3 conf：setting.xml配置文件
+ 1.4 lib：含有Maven运行时需要的java类库
+ 1.5 license.txt notice.txt readme.txt等针对maven版本，第三方软件等简要介绍
+2.环境变量的配置 （系统环境变量） 这个和java那套流程一样
+ 2.1  MAVEN_HOME   : maven的安装路径
+ 2.2  path         ：%MAVEN_HOME%\bin
+ 现在在哪里都可以点出maven了
+ 《maven配置完毕》
+3.maven仓库就是下载到哪里（就是conf中的配置文件setting.xml）
+ 3.1 Default: ${user.home}/.m2/repository 这是默认的 c 盘  :C:\Users\fock\.m2\repository
+ 3.2 最好是改成自己的  ：  <localRepository>D:/maven/repository</localRepository> 把系统提供的注释掉就行了
+ 这是告诉maven，我让你下载到哪里的意思，默认的仓库不在生效
+ 3.3 注意 最好是把setting.xml复制一份放到仓库同级目录 因为以后的话，因为已换了仓库地址，maven就直接过这里来了 不回去了
+ 直接度这个就好了  D:/maven/setting.xml
+ 《仓库配置完毕》
+4.maven约定：也就是maven能识别的结构(必须有的文件夹)
+ 4.1.1 src/main/java          : 存放项目的java文件
+ 4.1.2 src/main/resources     : 存放项目资源文件  如 spring，hibernatepe配置文件
+ 4.2.1 src/test/java          : 存放所有测试.java文件，如Junit测试类
+ 4.2.2 src/test/resources     : 测试资源文件
+ 4.3 target                   : 项目输出位置，编译完成之后，这里边自动会有一个classes文件夹
+ 4.3 pom.xml                  : 项目核心配置文件
+ 总结：项目架构文件 大体上 只有如下几个 1.src（main，test） 2.target 3.pom.xml
+5.eclipse 下创建maven工程（首先更改视图，要不会很麻烦）
+（window-showview-other-package（搜索框输入）-选择（Package Explorer）-可能有时候出现在不是工作区，直接把他们用鼠标拖过去
+或者右键项目名字——showin也行
+ 5.1 eclipse配置maven环境 
+   5.1.1 window—preferences-搜索maven—installations(下载)——点击add（找到下载的maven)-apply
+   5.1.2 window—preferences-搜索maven-UserSetting-Browse(找到自己的maven仓库下面的setting.xml)-apply
+ 5.2 eclipse创建maven项目
+ 	5.2.1 File-new-maven-(动态maven勾选1.2 纯javamaven工程 人家默认就是钩选2直接下一步)
+ 	5.2.2  eclipse工程中的某些名称：
+ 	  group id ： 群组id （一般写公司域名的反写）
+      Artifact id : 项目id（也就是你要做的项目的名字）
+      version ： 版本号无所谓，先走默认
+      package ：留不留不所谓，不想要一会删了就好
+ 5.3 创建完成等项目上出现M，就可以了
+ 5.4 可以看到 src target pom.xml 删除src下面 main 和 test 下面的一切
+      我们发现source并没有在，你可以自己创建
+ 5.5 当我们使用@Test的时候会报错，这时候，更改pom.xml中的Junit的版本把3.8.1改成4.9
+ 5.6 pom.xml文件解释：
+   5.6.1：   <modelVersion>4.0.0</modelVersion>   <modelVersion>（模型版本号）
+           <groupId>com.briup.bean</groupId> 群组ID：单位域名反写
+           <artifactId>maven_my</artifactId> 项目ID:一个单位有一个域名，但是一个单位可以有多个项目
+           <version>0.0.1-SNAPSHOT</version> 版本ID：用于描述开发过程的阶段性描述
+           <packaging>jar</packaging>        打包后发布的是啥包，默认jar可以删掉
+           <name>maven_my</name>   就是个描述而已，可以删掉没用
+            <url>http://maven.apache.org</url> 将来程序想要下载从哪里下
+            <properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+             </properties>                              默认字符集
+              
+   5.6.2   <dependencies>依赖管理这里有许多依赖</dependencies>
+   5.6.3    坐标
+      
+ 
+ 
+ 	 
+   
+   
+ 
+ 
